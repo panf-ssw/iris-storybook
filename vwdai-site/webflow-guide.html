@@ -520,6 +520,30 @@ body{font-family:'DM Sans',sans-serif;background:#f0f1f8;color:#0c0e1a;line-heig
       <div class="prop"><span class="prop-k">Radius</span><span class="prop-v">100px</span></div>
       <div class="prop"><span class="prop-k">Font</span><span class="prop-v">DM Sans 500 · 15px · ls 0.01em</span></div>
       <div class="prop"><span class="prop-k">Hover</span><span class="prop-v">bg white · color #6951F4 · translateY(-1px)</span></div>
+      <div style="margin-top:14px;">
+        <div style="font-size:10px;font-family:'DM Mono',monospace;color:#8888a0;margin-bottom:6px;">HTML → вставить в Webflow Embed</div>
+        <pre class="code-block">&lt;a href="#" class="btn-primary"&gt;Request Demo&lt;/a&gt;
+
+<span class="p">/* CSS */</span>
+.btn-primary {
+  background: <span class="s">#6951F4</span>;
+  color: white;
+  padding: <span class="s">14px 32px</span>;
+  border-radius: <span class="s">100px</span>;
+  font-family: <span class="s">'DM Sans', sans-serif</span>;
+  font-size: <span class="s">15px</span>;
+  font-weight: <span class="s">500</span>;
+  letter-spacing: <span class="s">0.01em</span>;
+  text-decoration: none;
+  display: inline-block;
+  transition: all <span class="s">0.25s</span>;
+}
+.btn-primary:hover {
+  background: white;
+  color: <span class="s">#6951F4</span>;
+  transform: translateY(<span class="s">-1px</span>);
+}</pre>
+      </div>
     </div>
 
     <div class="card">
@@ -532,6 +556,34 @@ body{font-family:'DM Sans',sans-serif;background:#f0f1f8;color:#0c0e1a;line-heig
       <div class="prop"><span class="prop-k">Color</span><span class="prop-v">rgba(255,255,255,0.8)</span></div>
       <div class="prop"><span class="prop-k">Padding</span><span class="prop-v">12px 24px</span></div>
       <div class="prop"><span class="prop-k">Font</span><span class="prop-v">Lexend 500 · 14px</span></div>
+      <div style="margin-top:14px;">
+        <div style="font-size:10px;font-family:'DM Mono',monospace;color:#8888a0;margin-bottom:6px;">HTML → вставить в Webflow Embed</div>
+        <pre class="code-block">&lt;a href="#" class="btn-outline"&gt;
+  See How It Works
+  &lt;svg width="16" height="16" viewBox="0 0 16 16" fill="none"&gt;
+    &lt;path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round"/&gt;
+  &lt;/svg&gt;
+&lt;/a&gt;
+
+<span class="p">/* CSS */</span>
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: <span class="s">8px</span>;
+  padding: <span class="s">12px 24px</span>;
+  border-radius: <span class="s">100px</span>;
+  border: 1px solid rgba(255,255,255,<span class="s">0.2</span>);
+  color: rgba(255,255,255,<span class="s">0.8</span>);
+  font-family: <span class="s">'Lexend', sans-serif</span>;
+  font-size: <span class="s">14px</span>;
+  font-weight: <span class="s">500</span>;
+  text-decoration: none;
+  transition: all <span class="s">0.2s</span>;
+}
+.btn-outline svg { transition: transform <span class="s">0.2s</span>; }
+.btn-outline:hover svg { transform: translateX(<span class="s">3px</span>); }</pre>
+      </div>
     </div>
 
     <div class="card full">
@@ -556,6 +608,60 @@ body{font-family:'DM Sans',sans-serif;background:#f0f1f8;color:#0c0e1a;line-heig
           <div class="prop"><span class="prop-k">tag-outline border</span><span class="prop-v">rgba(105,81,244,0.35) · color rgba(255,255,255,0.65)</span></div>
           <div class="prop"><span class="prop-k">Add category bg</span><span class="prop-v">gradient violet→purple · box-shadow 0 0 16px rgba(105,81,244,0.2)</span></div>
         </div>
+      </div>
+      <div style="margin-top:14px;">
+        <div style="font-size:10px;font-family:'DM Mono',monospace;color:#8888a0;margin-bottom:6px;">HTML всех чипсов → вставить в Webflow Embed</div>
+        <pre class="code-block"><span class="p">&lt;!-- Chip фиолетовый (первые 3) --&gt;</span>
+&lt;span class="chip chip-purple"&gt;
+  &lt;i class="ph-light ph-pill"&gt;&lt;/i&gt; Pharma Safe
+&lt;/span&gt;
+&lt;span class="chip chip-purple"&gt;
+  &lt;i class="ph-light ph-baby"&gt;&lt;/i&gt; Kids Content
+&lt;/span&gt;
+&lt;span class="chip chip-purple"&gt;
+  &lt;i class="ph-light ph-buildings"&gt;&lt;/i&gt; Competitor: Nike
+&lt;/span&gt;
+
+<span class="p">&lt;!-- Chip контур (outline) --&gt;</span>
+&lt;span class="chip chip-outline"&gt;
+  &lt;i class="ph-light ph-scales"&gt;&lt;/i&gt; Political Neutrality
+&lt;/span&gt;
+&lt;span class="chip chip-outline"&gt;
+  &lt;i class="ph-light ph-leaf"&gt;&lt;/i&gt; ESG Alignment
+&lt;/span&gt;
+
+<span class="p">&lt;!-- Кнопка Add category --&gt;</span>
+&lt;a href="#" class="chip chip-add"&gt;
+  &lt;i class="ph-light ph-plus"&gt;&lt;/i&gt; Add category
+&lt;/a&gt;
+
+<span class="p">/* CSS */</span>
+.chip {
+  display: inline-flex; align-items: center;
+  gap: <span class="s">7px</span>; padding: <span class="s">9px 16px</span>;
+  border-radius: <span class="s">100px</span>;
+  font-family: <span class="s">'DM Sans', sans-serif</span>;
+  font-size: <span class="s">13px</span>; font-weight: <span class="s">500</span>;
+}
+.chip i { font-size: <span class="s">15px</span>; }
+.chip-purple {
+  background: rgba(195,93,253,<span class="s">0.12</span>);
+  border: 1px solid rgba(195,93,253,<span class="s">0.3</span>);
+  color: <span class="s">#D89DFF</span>;
+}
+.chip-outline {
+  background: transparent;
+  border: 1px solid rgba(105,81,244,<span class="s">0.35</span>);
+  color: rgba(255,255,255,<span class="s">0.65</span>);
+}
+.chip-outline i { color: <span class="s">#6951F4</span>; }
+.chip-add {
+  background: linear-gradient(135deg, rgba(105,81,244,<span class="s">0.3</span>), rgba(195,93,253,<span class="s">0.2</span>));
+  border: 1px solid rgba(155,133,255,<span class="s">0.45</span>);
+  color: <span class="s">#d4c8ff</span>;
+  text-decoration: none;
+  box-shadow: 0 0 16px rgba(105,81,244,<span class="s">0.2</span>);
+}</pre>
       </div>
     </div>
 
@@ -594,6 +700,213 @@ body{font-family:'DM Sans',sans-serif;background:#f0f1f8;color:#0c0e1a;line-heig
           <div class="prop"><span class="prop-k">Bar Risk</span><span class="prop-v">gradient #f97316 → #ef4444</span></div>
           <div class="prop"><span class="prop-k">Bar Warn</span><span class="prop-v">gradient #f59e0b → #f97316</span></div>
         </div>
+      </div>
+      <div style="margin-top:14px;">
+        <div style="font-size:10px;font-family:'DM Mono',monospace;color:#8888a0;margin-bottom:6px;">HTML Score Panel → вставить в Webflow Embed</div>
+        <pre class="code-block">&lt;div class="score-panel"&gt;
+  &lt;div class="score-header"&gt;
+    &lt;div&gt;
+      &lt;div class="score-role"&gt;Creator Profile&lt;/div&gt;
+      &lt;div class="score-name"&gt;Frankie Edgar&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class="score-badge"&gt;● Monitoring&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="score-rows"&gt;
+    &lt;div class="score-row"&gt;
+      &lt;span class="score-label"&gt;Brand Alignment&lt;/span&gt;
+      &lt;div class="score-track"&gt;&lt;div class="score-fill fill-safe" style="--w:88%"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;span class="score-val"&gt;88&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="score-row"&gt;
+      &lt;span class="score-label"&gt;FTC Compliance&lt;/span&gt;
+      &lt;div class="score-track"&gt;&lt;div class="score-fill fill-risk" style="--w:62%"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;span class="score-alert"&gt;!&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="score-row"&gt;
+      &lt;span class="score-label"&gt;Hate / Violence&lt;/span&gt;
+      &lt;div class="score-track"&gt;&lt;div class="score-fill fill-risk" style="--w:75%"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;span class="score-val"&gt;75&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="score-row"&gt;
+      &lt;span class="score-label"&gt;Political Content&lt;/span&gt;
+      &lt;div class="score-track"&gt;&lt;div class="score-fill fill-warn" style="--w:48%"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;span class="score-val"&gt;48&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<span class="p">/* CSS Score Panel */</span>
+.score-panel {
+  background: linear-gradient(145deg, rgba(16,14,36,<span class="s">0.97</span>), rgba(22,16,48,<span class="s">0.95</span>));
+  border: 1px solid rgba(155,133,255,<span class="s">0.25</span>);
+  border-radius: <span class="s">20px</span>; padding: <span class="s">20px 22px</span>; width: <span class="s">310px</span>;
+  backdrop-filter: blur(<span class="s">24px</span>);
+  box-shadow: 0 0 0 1px rgba(105,81,244,0.12) inset,
+              0 0 40px rgba(105,81,244,<span class="s">0.18</span>),
+              0 24px 64px rgba(0,0,0,<span class="s">0.55</span>),
+              inset 0 1px 0 rgba(255,255,255,<span class="s">0.07</span>);
+}
+.score-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: <span class="s">14px</span>; }
+.score-role { font-size: <span class="s">9px</span>; font-weight: <span class="s">600</span>; color: rgba(255,255,255,<span class="s">0.45</span>); text-transform: uppercase; letter-spacing: <span class="s">0.1em</span>; margin-bottom: <span class="s">4px</span>; }
+.score-name { font-family: <span class="s">'Lexend'</span>; font-size: <span class="s">20px</span>; font-weight: <span class="s">800</span>; color: white; }
+.score-badge { font-size: <span class="s">10px</span>; font-weight: <span class="s">600</span>; color: <span class="s">#4ade80</span>; background: rgba(74,222,128,<span class="s">0.1</span>); border: 1px solid rgba(74,222,128,<span class="s">0.3</span>); padding: <span class="s">3px 10px</span>; border-radius: <span class="s">100px</span>; }
+.score-rows { display: flex; flex-direction: column; gap: <span class="s">10px</span>; }
+.score-row { display: grid; grid-template-columns: <span class="s">90px 1fr 28px</span>; gap: <span class="s">8px</span>; align-items: center; }
+.score-label { font-size: <span class="s">11px</span>; color: rgba(255,255,255,<span class="s">0.45</span>); }
+.score-track { height: <span class="s">2px</span>; background: repeating-linear-gradient(90deg, rgba(105,81,244,0.35) 0px, rgba(105,81,244,0.35) 4px, transparent 4px, transparent 8px); }
+.score-fill { height: <span class="s">100%</span>; width: var(<span class="s">--w</span>); animation: barGrow <span class="s">2s ease forwards</span>; }
+.fill-safe { background: linear-gradient(90deg, <span class="s">#4ade80, #22d3ee</span>); }
+.fill-risk { background: linear-gradient(90deg, <span class="s">#f97316, #ef4444</span>); }
+.fill-warn { background: linear-gradient(90deg, <span class="s">#f59e0b, #f97316</span>); }
+.score-val { font-size: <span class="s">12px</span>; font-weight: <span class="s">700</span>; color: white; text-align: right; }
+.score-alert { width: <span class="s">16px</span>; height: <span class="s">16px</span>; border-radius: <span class="s">50%</span>; border: 1.5px solid <span class="s">#f4786f</span>; color: <span class="s">#f4786f</span>; font-size: <span class="s">9px</span>; font-weight: <span class="s">700</span>; display: flex; align-items: center; justify-content: center; margin-left: auto; }</pre>
+      </div>
+    </div>
+
+    <!-- STEP CARD -->
+    <div class="card full">
+      <div class="card-title">Step Card — How It Works</div>
+      <div style="background:#0c0e1a;padding:32px;border-radius:12px;display:flex;gap:1px;margin-bottom:16px;overflow:hidden;">
+        <div style="flex:1;background:rgba(255,255,255,0.04);padding:32px 28px;position:relative;overflow:hidden;">
+          <span style="position:absolute;top:16px;right:20px;font-family:'Lexend',sans-serif;font-size:96px;font-weight:800;line-height:1;color:rgba(105,81,244,0.07);letter-spacing:-4px;pointer-events:none;">01</span>
+          <i class="ph-light ph-magnifying-glass" style="font-size:56px;color:#6951F4;display:block;margin-bottom:20px;"></i>
+          <h4 style="font-family:'Lexend',sans-serif;font-size:20px;font-weight:700;color:white;margin-bottom:12px;">Scan</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;">We scan thousands of posts, videos and comments across every platform in real time.</p>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,0.04);padding:32px 28px;position:relative;overflow:hidden;">
+          <span style="position:absolute;top:16px;right:20px;font-family:'Lexend',sans-serif;font-size:96px;font-weight:800;line-height:1;color:rgba(105,81,244,0.07);letter-spacing:-4px;pointer-events:none;">02</span>
+          <i class="ph-light ph-sliders" style="font-size:56px;color:#6951F4;display:block;margin-bottom:20px;"></i>
+          <h4 style="font-family:'Lexend',sans-serif;font-size:20px;font-weight:700;color:white;margin-bottom:12px;">Score</h4>
+          <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;">Our AI scores every creator against 40+ brand safety, compliance, and values signals.</p>
+        </div>
+      </div>
+      <div style="margin-top:4px;">
+        <div style="font-size:10px;font-family:'DM Mono',monospace;color:#8888a0;margin-bottom:6px;">HTML Step Card → вставить в Webflow Embed</div>
+        <pre class="code-block"><span class="p">&lt;!-- Сетка шагов: gap 1px на тёмном фоне = разделители --&gt;</span>
+&lt;div class="how-grid"&gt;
+
+  &lt;div class="how-step"&gt;
+    &lt;span class="step-bg-num"&gt;01&lt;/span&gt;
+    &lt;i class="ph-light ph-magnifying-glass step-icon"&gt;&lt;/i&gt;
+    &lt;h4 class="step-title"&gt;Scan&lt;/h4&gt;
+    &lt;p class="step-text"&gt;We scan thousands of posts, videos and comments
+    across every platform in real time.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="how-step"&gt;
+    &lt;span class="step-bg-num"&gt;02&lt;/span&gt;
+    &lt;i class="ph-light ph-sliders step-icon"&gt;&lt;/i&gt;
+    &lt;h4 class="step-title"&gt;Score&lt;/h4&gt;
+    &lt;p class="step-text"&gt;Our AI scores every creator against 40+ signals.&lt;/p&gt;
+  &lt;/div&gt;
+
+  <span class="p">&lt;!-- повторить для 03, 04 --&gt;</span>
+&lt;/div&gt;
+
+<span class="p">/* CSS */</span>
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: <span class="s">1px</span>; <span class="p">/* 1px gap = линии-разделители */</span>
+  background: rgba(255,255,255,<span class="s">0.06</span>); <span class="p">/* цвет разделителей */</span>
+}
+.how-step {
+  background: <span class="s">#0c0e1a</span>; <span class="p">/* или rgba(255,255,255,0.04) */</span>
+  padding: <span class="s">32px 28px</span>;
+  position: relative;
+  overflow: hidden;
+}
+.step-bg-num {
+  position: absolute; top: <span class="s">16px</span>; right: <span class="s">20px</span>;
+  font-family: <span class="s">'Lexend'</span>; font-size: <span class="s">96px</span>; font-weight: <span class="s">800</span>;
+  line-height: 1; letter-spacing: <span class="s">-4px</span>;
+  color: rgba(105,81,244,<span class="s">0.07</span>);
+  pointer-events: none; user-select: none;
+}
+.step-icon { font-size: <span class="s">56px</span>; color: <span class="s">#6951F4</span>; display: block; margin-bottom: <span class="s">20px</span>; }
+.step-title { font-family: <span class="s">'Lexend'</span>; font-size: <span class="s">20px</span>; font-weight: <span class="s">700</span>; color: white; margin-bottom: <span class="s">12px</span>; }
+.step-text { font-size: <span class="s">14px</span>; color: rgba(255,255,255,<span class="s">0.5</span>); line-height: <span class="s">1.6</span>; }
+
+<span class="p">/* Иконки для каждого шага: */</span>
+<span class="p">/* 01 Scan    → ph-magnifying-glass */</span>
+<span class="p">/* 02 Score   → ph-sliders          */</span>
+<span class="p">/* 03 Match   → ph-check-circle     */</span>
+<span class="p">/* 04 Monitor → ph-bell             */</span></pre>
+      </div>
+    </div>
+
+    <!-- INTEL CARD -->
+    <div class="card full">
+      <div class="card-title">Intel Card — Creator Intelligence Section</div>
+      <div style="background:#f5f6fa;padding:24px;border-radius:12px;display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+        <div style="background:white;border:1px solid rgba(10,10,15,0.07);border-radius:16px;padding:24px;flex:1;min-width:200px;display:flex;flex-direction:column;gap:14px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(77,212,255,0.12);display:flex;align-items:center;justify-content:center;">
+            <i class="ph-light ph-chart-bar" style="font-size:20px;color:#4DD4FF;"></i>
+          </div>
+          <div>
+            <div style="font-family:'Lexend',sans-serif;font-size:16px;font-weight:700;color:#0c0e1a;margin-bottom:6px;">Audience Analysis</div>
+            <div style="font-size:13px;color:#52526a;line-height:1.55;">Demographic breakdown, engagement patterns, and follower authenticity scores.</div>
+          </div>
+        </div>
+        <div style="background:white;border:1px solid rgba(10,10,15,0.07);border-radius:16px;padding:24px;flex:1;min-width:200px;display:flex;flex-direction:column;gap:14px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(77,212,255,0.12);display:flex;align-items:center;justify-content:center;">
+            <i class="ph-light ph-shield-check" style="font-size:20px;color:#4DD4FF;"></i>
+          </div>
+          <div>
+            <div style="font-family:'Lexend',sans-serif;font-size:16px;font-weight:700;color:#0c0e1a;margin-bottom:6px;">Risk Detection</div>
+            <div style="font-size:13px;color:#52526a;line-height:1.55;">Flags controversial content, brand conflicts, and compliance violations automatically.</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:4px;">
+        <div style="font-size:10px;font-family:'DM Mono',monospace;color:#8888a0;margin-bottom:6px;">HTML Intel Card → вставить в Webflow Embed</div>
+        <pre class="code-block">&lt;div class="intel-grid"&gt;
+
+  &lt;div class="intel-card"&gt;
+    &lt;div class="intel-icon"&gt;
+      &lt;i class="ph-light ph-chart-bar"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;h4 class="intel-title"&gt;Audience Analysis&lt;/h4&gt;
+      &lt;p class="intel-text"&gt;Demographic breakdown, engagement patterns,
+      and follower authenticity scores.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  <span class="p">&lt;!-- повторить для остальных карточек --&gt;</span>
+&lt;/div&gt;
+
+<span class="p">/* CSS */</span>
+.intel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); <span class="p">/* или 2 на мобайле */</span>
+  gap: <span class="s">20px</span>;
+}
+.intel-card {
+  background: white;
+  border: 1px solid rgba(10,10,15,<span class="s">0.07</span>);
+  border-radius: <span class="s">16px</span>;
+  padding: <span class="s">24px</span>;
+  display: flex; flex-direction: column; gap: <span class="s">14px</span>;
+  transition: border-color <span class="s">0.2s</span>;
+}
+.intel-card:hover { border-color: rgba(105,81,244,<span class="s">0.3</span>); }
+.intel-icon {
+  width: <span class="s">40px</span>; height: <span class="s">40px</span>; border-radius: <span class="s">10px</span>;
+  background: rgba(77,212,255,<span class="s">0.12</span>);
+  display: flex; align-items: center; justify-content: center;
+}
+.intel-icon i { font-size: <span class="s">20px</span>; color: <span class="s">#4DD4FF</span>; }
+.intel-title { font-family: <span class="s">'Lexend'</span>; font-size: <span class="s">16px</span>; font-weight: <span class="s">700</span>; color: <span class="s">#0c0e1a</span>; margin-bottom: <span class="s">6px</span>; }
+.intel-text { font-size: <span class="s">13px</span>; color: <span class="s">#52526a</span>; line-height: <span class="s">1.55</span>; }
+
+<span class="p">/* Иконки для каждой карточки: */</span>
+<span class="p">/* Audience Analysis → ph-chart-bar   */</span>
+<span class="p">/* Risk Detection    → ph-shield-check */</span>
+<span class="p">/* Content History   → ph-clock        */</span>
+<span class="p">/* Brand Alignment   → ph-trend-up     */</span>
+<span class="p">/* Compliance        → ph-scales       */</span>
+<span class="p">/* Live Monitoring   → ph-bell         */</span></pre>
       </div>
     </div>
 
