@@ -1530,8 +1530,11 @@
           g.appendChild(fp);
         } else if(name==='x'){
           // X (the new Twitter): bold diagonal cross
-          g.appendChild(el('line',{x1:'-7',y1:'-7',x2:'7',y2:'7',stroke:'white','stroke-width':'3','stroke-linecap':'round'}));
-          g.appendChild(el('line',{x1:'7',y1:'-7',x2:'-7',y2:'7',stroke:'white','stroke-width':'3','stroke-linecap':'round'}));
+          // Official X logo path (scaled to fit ~14px box centered at 0,0)
+          g.appendChild(el('path',{
+            d:'M -7.5 -7.5 L -1.2 -0.2 L -7.5 7.5 L -5.2 7.5 L 0.8 1.8 L 6.2 7.5 L 8.5 7.5 L 1.8 -0.2 L 8.5 -7.5 L 6.2 -7.5 L 0.8 -2.2 L -5.2 -7.5 Z',
+            fill:'white'
+          }));
         } else if(name==='rd'){
           // Reddit alien face
           // body circle
