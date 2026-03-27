@@ -345,27 +345,27 @@
   /* Orbital layout: center ~52% / 44%, H-radius 36%, V-radius 30% */
   .viz-tag-1 { /* 12 o'clock — FTC */
     top: 8%; left: 52%; transform: translateX(-50%);
-    background: rgba(107,78,255,0.18); border-color: rgba(107,78,255,0.5); color: #b8a4ff;
+    background: rgba(155,133,255,0.12); border-color: rgba(155,133,255,0.35); color: #b8a4ff;
     animation-duration: 6s; animation-delay: 0s;
   }
   .viz-tag-2 { /* 2 o'clock — Followers */
     top: 26%; left: 90%; transform: translateX(-50%);
-    background: rgba(77,212,255,0.12); border-color: rgba(77,212,255,0.4); color: #4DD4FF;
+    background: rgba(155,133,255,0.12); border-color: rgba(155,133,255,0.35); color: #b8a4ff;
     animation-duration: 7s; animation-delay: 1s;
   }
   .viz-tag-3 { /* 7 o'clock — Hate Content */
     top: 62%; left: 16%; transform: translateX(-50%);
-    background: rgba(232,83,74,0.15); border-color: rgba(232,83,74,0.4); color: #f4786f;
+    background: rgba(155,133,255,0.12); border-color: rgba(155,133,255,0.35); color: #b8a4ff;
     animation-duration: 8s; animation-delay: 0.5s;
   }
   .viz-tag-4 { /* 5 o'clock — Brand Safe */
     top: 44%; left: 80%; transform: translateX(-50%);
-    background: rgba(107,78,255,0.12); border-color: rgba(107,78,255,0.35); color: #9b85ff;
+    background: rgba(155,133,255,0.12); border-color: rgba(155,133,255,0.35); color: #b8a4ff;
     animation-duration: 6.5s; animation-delay: 1.5s;
   }
   .viz-tag-5 { /* 10 o'clock — Political */
     top: 26%; left: 14%; transform: translateX(-50%);
-    background: rgba(245,166,35,0.12); border-color: rgba(245,166,35,0.4); color: #f5a623;
+    background: rgba(155,133,255,0.12); border-color: rgba(155,133,255,0.35); color: #b8a4ff;
     animation-duration: 9s; animation-delay: 0.8s;
   }
 
@@ -373,6 +373,7 @@
     0%,100% { transform: translateX(-50%) translateY(0px); }
     50%      { transform: translateX(-50%) translateY(-8px); }
   }
+
 
   /* Score panel overlay */
   .viz-score-panel {
@@ -1358,37 +1359,19 @@
     <div class="viz-tag viz-tag-5">Political: Moderate</div>
 
     <!-- Central SVG orbit visualization -->
-    <svg class="viz-canvas" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="viz-canvas" id="orbit-svg" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
 
       <!-- Outer pulse ring -->
       <circle class="viz-center-pulse" cx="240" cy="240" r="190" stroke="rgba(107,78,255,0.4)" stroke-width="1" fill="none"/>
 
-      <!-- Orbit ring 3 (outermost) -->
-      <g class="orbit-ring orbit-ring-3">
-        <circle cx="240" cy="240" r="175" stroke="rgba(107,78,255,0.12)" stroke-width="1" stroke-dasharray="4 8"/>
-        <circle class="orbit-dot" cx="415" cy="240" r="4" fill="#6b4eff" opacity="0.8"/>
-        <circle class="orbit-dot" cx="65"  cy="240" r="3" fill="#00d4c8" opacity="0.6"/>
-        <circle class="orbit-dot" cx="240" cy="65"  r="5" fill="#9b85ff" opacity="0.9"/>
-        <circle class="orbit-dot" cx="310" cy="94"  r="3" fill="#e8534a" opacity="0.7"/>
-        <circle class="orbit-dot" cx="378" cy="344" r="4" fill="#f5a623" opacity="0.7"/>
-      </g>
-
-      <!-- Orbit ring 2 (mid) -->
-      <g class="orbit-ring orbit-ring-2">
-        <circle cx="240" cy="240" r="130" stroke="rgba(0,212,200,0.15)" stroke-width="1" stroke-dasharray="2 10"/>
-        <circle class="orbit-dot" cx="370" cy="240" r="5" fill="#00d4c8" opacity="0.9"/>
-        <circle class="orbit-dot" cx="110" cy="240" r="3" fill="#6b4eff" opacity="0.7"/>
-        <circle class="orbit-dot" cx="240" cy="110" r="4" fill="#f5a623" opacity="0.8"/>
-        <circle class="orbit-dot" cx="316" cy="160" r="3" fill="#e8534a" opacity="0.6"/>
-      </g>
-
-      <!-- Orbit ring 1 (inner) -->
-      <g class="orbit-ring orbit-ring-1">
-        <circle cx="240" cy="240" r="80" stroke="rgba(107,78,255,0.2)" stroke-width="1.5" stroke-dasharray="6 6"/>
-        <circle class="orbit-dot" cx="320" cy="240" r="5" fill="#6b4eff"/>
-        <circle class="orbit-dot" cx="160" cy="240" r="4" fill="#9b85ff"/>
-        <circle class="orbit-dot" cx="240" cy="160" r="3" fill="#00d4c8"/>
-      </g>
+      <!-- 3D orbit ellipses (static rings, JS animates dots) -->
+      <g id="platform-lines-3d"></g>
+      <ellipse cx="240" cy="240" rx="175" ry="87" stroke="rgba(107,78,255,0.18)" stroke-width="1" fill="none" stroke-dasharray="4 8"/>
+      <ellipse cx="240" cy="240" rx="130" ry="65" stroke="rgba(0,212,200,0.12)" stroke-width="1" fill="none" stroke-dasharray="2 8"/>
+      <ellipse cx="240" cy="240" rx="80"  ry="40" stroke="rgba(77,212,255,0.2)" stroke-width="1.5" fill="none" stroke-dasharray="3 6"/>
+      <!-- JS z-order groups: back (behind avatar) -->
+      <g id="dots-behind-3d"></g>
+      <g id="platforms-behind-3d"></g>
 
       <!-- Central avatar glow backdrop -->
       <circle cx="240" cy="240" r="60" fill="rgba(107,78,255,0.2)"/>
@@ -1407,6 +1390,21 @@
         clip-path="url(#avatarClip)"
         preserveAspectRatio="xMidYMid slice"
       />
+
+      <!-- JS z-order groups: front (in front of avatar) -->
+      <g id="dots-front-3d"></g>
+      <g id="platforms-front-3d"></g>
+
+      <!-- Instagram gradient for 3D icons -->
+      <defs>
+        <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FFDC80"/>
+          <stop offset="30%" stop-color="#F56040"/>
+          <stop offset="65%" stop-color="#C13584"/>
+          <stop offset="100%" stop-color="#833AB4"/>
+        </linearGradient>
+      </defs>
+
 
       <!-- Category label lines radiating out -->
       <line x1="240" y1="188" x2="240" y2="148" stroke="rgba(107,78,255,0.3)" stroke-width="1"/>
@@ -1434,6 +1432,186 @@
       <text x="158" y="175" text-anchor="end" font-size="9" fill="rgba(255,255,255,0.4)" font-family="DM Sans, sans-serif">Alcohol</text>
 
     </svg>
+
+    <!-- 3D Orbital Animation -->
+    <script>
+    (function(){
+      var NS='http://www.w3.org/2000/svg';
+      var svg=document.getElementById('orbit-svg');
+      var CX=240,CY=240;
+      // Tilt: cos(60°)=0.5 for ry, sin(60°)=0.866 for depth
+      var TILT_COS=0.5, TILT_SIN=0.866;
+
+      // Orbit definitions
+      var orbits=[
+        {rx:80,  ry:40,  speed:0.65,  color:'#4DD4FF', n:3, sz:4.2},
+        {rx:130, ry:65,  speed:-0.38, color:'#9b8fff', n:4, sz:4.8},
+        {rx:175, ry:87,  speed:0.22,  color:'#C35DFD', n:5, sz:5.5},
+      ];
+
+      // Platform definitions (outer orbit r=210)
+      var PRXO=210, PRYO=105;
+      var platforms=[
+        {a:0,                    color:'#FF0000', name:'yt'},
+        {a:Math.PI*(2/7),        color:'#C13584', name:'ig'},
+        {a:Math.PI*(4/7),        color:'#010101', name:'tt'},
+        {a:Math.PI*(6/7),        color:'#1877F2', name:'fb'},
+        {a:Math.PI*(8/7),        color:'#FF4500', name:'rd'},
+        {a:Math.PI*(10/7),       color:'#00AFF0', name:'of'},
+        {a:Math.PI*(12/7),       color:'#111111', name:'x'},
+      ];
+      var PSPEED=0.055;
+
+      var dotsBehind=document.getElementById('dots-behind-3d');
+      var dotsFront =document.getElementById('dots-front-3d');
+      var platBehind=document.getElementById('platforms-behind-3d');
+      var platFront =document.getElementById('platforms-front-3d');
+      var linesG    =document.getElementById('platform-lines-3d');
+
+      function el(tag,attrs){
+        var e=document.createElementNS(NS,tag);
+        for(var k in attrs) e.setAttribute(k,attrs[k]);
+        return e;
+      }
+
+      // Create orbit dots
+      var allDots=[];
+      orbits.forEach(function(o){
+        for(var i=0;i<o.n;i++){
+          var angle=(i/o.n)*Math.PI*2;
+          var g=el('g',{});
+          g.appendChild(el('circle',{fill:o.color,opacity:'0.28'}));
+          g.appendChild(el('circle',{fill:o.color}));
+          dotsFront.appendChild(g);
+          allDots.push({g:g,glow:g.children[0],dot:g.children[1],o:o,a:angle});
+        }
+      });
+
+      // Create platform icons + connection lines
+      var platElems=[];
+      platforms.forEach(function(p,i){
+        // Connection line
+        var line=el('line',{x2:CX,y2:CY,stroke:p.color,'stroke-opacity':'0.22','stroke-width':'0.7','stroke-dasharray':'3 6'});
+        linesG.appendChild(line);
+
+        // Icon group
+        var g=el('g',{});
+        // glow halo
+        g.appendChild(el('circle',{r:'26',fill:p.color,opacity:'0.13'}));
+        // main circle
+        var fill=(p.name==='ig')?'url(#igGrad)':p.color;
+        g.appendChild(el('circle',{r:'17',fill:fill}));
+        // icon
+        appendIcon(g,p.name);
+        platFront.appendChild(g);
+        platElems.push({g:g,line:line,p:p,a:p.a});
+      });
+
+      function appendIcon(g,name){
+        if(name==='yt'){
+          g.appendChild(el('polygon',{points:'-5.5,-6.5 9,0 -5.5,6.5',fill:'white'}));
+        } else if(name==='ig'){
+          var r=el('rect',{x:'-8',y:'-8',width:'16',height:'16',rx:'4.5',fill:'none',stroke:'white','stroke-width':'1.5'});
+          var c=el('circle',{r:'4',fill:'none',stroke:'white','stroke-width':'1.5'});
+          var d=el('circle',{cx:'5.5',cy:'-5.5',r:'1.5',fill:'white'});
+          g.appendChild(r); g.appendChild(c); g.appendChild(d);
+        } else if(name==='tt'){
+          var path=el('path',{
+            d:'M2.2,-7 L5.5,-7 C5.5,-4.2 7.8,-2 10,-2 L10,1.8 C7.8,1.8 5.8,0.8 4.8,-0.3 L4.8,5.8 C4.8,9 2.2,11.5 -1,11.5 C-4.2,11.5 -6.8,9 -6.8,5.8 C-6.8,2.6 -4.2,0.1 -1,0.1 L-1,4 C-2.6,4 -3.8,5 -3.8,6.2 C-3.8,7.4 -2.6,8.4 -1,8.4 C0.6,8.4 1.8,7.4 1.8,6.2 L1.8,-7 Z',
+            fill:'white',transform:'scale(0.66) translate(-1,-2)'
+          });
+          var dot=el('circle',{cx:'6.5',cy:'-6',r:'1.8',fill:'#EE1D52'});
+          g.appendChild(path); g.appendChild(dot);
+        } else if(name==='fb'){
+          var fp=el('path',{
+            d:'M2,-11 C0,-11 -2.8,-9 -2.8,-6 L-2.8,-3.5 L-5.5,-3.5 L-5.5,0 L-2.8,0 L-2.8,10 L1,10 L1,0 L4,0 L4.5,-3.5 L1,-3.5 L1,-6 C1,-7 1.5,-7.5 2.5,-7.5 L4.5,-7.5 L4.5,-11 Z',
+            fill:'white',transform:'scale(0.76)'
+          });
+          g.appendChild(fp);
+        } else if(name==='x'){
+          // X (the new Twitter): bold diagonal cross
+          g.appendChild(el('line',{x1:'-7',y1:'-7',x2:'7',y2:'7',stroke:'white','stroke-width':'3','stroke-linecap':'round'}));
+          g.appendChild(el('line',{x1:'7',y1:'-7',x2:'-7',y2:'7',stroke:'white','stroke-width':'3','stroke-linecap':'round'}));
+        } else if(name==='rd'){
+          // Reddit alien face
+          // body circle
+          var bodyC=el('circle',{cx:'0',cy:'1',r:'6.5',fill:'white'});
+          // head/antenna
+          var antenna=el('line',{x1:'2',y1:'-5.5',x2:'5',y2:'-8',stroke:'white','stroke-width':'1.2','stroke-linecap':'round'});
+          var antDot=el('circle',{cx:'5.5',cy:'-8.5',r:'1.4',fill:'white'});
+          // eyes
+          var eyeL=el('circle',{cx:'-2.5',cy:'0',r:'1.4',fill:'#FF4500'});
+          var eyeR=el('circle',{cx:'2.5',cy:'0',r:'1.4',fill:'#FF4500'});
+          // smile arc
+          var smile=el('path',{d:'M -3.5 3.5 Q 0 6 3.5 3.5',fill:'none',stroke:'#FF4500','stroke-width':'1.2','stroke-linecap':'round'});
+          // ears
+          var earL=el('circle',{cx:'-7',cy:'-1',r:'1.8',fill:'white'});
+          var earR=el('circle',{cx:'7',cy:'-1',r:'1.8',fill:'white'});
+          g.appendChild(earL); g.appendChild(earR);
+          g.appendChild(bodyC); g.appendChild(antenna); g.appendChild(antDot);
+          g.appendChild(eyeL); g.appendChild(eyeR); g.appendChild(smile);
+        } else if(name==='of'){
+          // OnlyFans: "OF" text style — circle with bold O+F
+          var ofText=el('text',{x:'0',y:'1','text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'800','font-family':'Arial,sans-serif',fill:'#00AFF0','letter-spacing':'-0.5'});
+          ofText.textContent='OF';
+          // white O ring
+          var ofRing=el('circle',{r:'6','fill':'none','stroke':'white','stroke-width':'2.2'});
+          g.appendChild(ofRing); g.appendChild(ofText);
+        }
+      }
+
+      function depthNorm(sinA){
+        return (sinA+1)/2; // 0=top(far) 1=bottom(near)
+      }
+
+      function move(g,behind,front,dn){
+        if(dn<0.5){ if(g.parentNode!==behind) behind.appendChild(g); }
+        else       { if(g.parentNode!==front)  front.appendChild(g); }
+      }
+
+      var last=null;
+      function frame(ts){
+        if(!last) last=ts;
+        var dt=Math.min((ts-last)/1000,0.1);
+        last=ts;
+
+        // Animate dots
+        allDots.forEach(function(d){
+          d.a+=d.o.speed*dt;
+          var x=CX+d.o.rx*Math.cos(d.a);
+          var y=CY+d.o.ry*Math.sin(d.a);
+          var dn=depthNorm(Math.sin(d.a));
+          var sc=0.55+dn*0.85;
+          var op=0.4+dn*0.6;
+          move(d.g,dotsBehind,dotsFront,dn);
+          d.g.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+')');
+          d.dot.setAttribute('r',(d.o.sz*sc).toFixed(1));
+          d.dot.setAttribute('opacity',op.toFixed(2));
+          d.glow.setAttribute('r',(d.o.sz*sc*2.4).toFixed(1));
+          d.glow.setAttribute('opacity',(op*0.22).toFixed(2));
+        });
+
+        // Animate platforms
+        platElems.forEach(function(pe){
+          pe.a+=PSPEED*dt;
+          var x=CX+PRXO*Math.cos(pe.a);
+          var y=CY+PRYO*Math.sin(pe.a);
+          var dn=depthNorm(Math.sin(pe.a));
+          var sc=0.62+dn*0.72;
+          var op=0.48+dn*0.52;
+          move(pe.g,platBehind,platFront,dn);
+          pe.g.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+') scale('+sc.toFixed(2)+')');
+          pe.g.setAttribute('opacity',op.toFixed(2));
+          pe.line.setAttribute('x1',x.toFixed(1));
+          pe.line.setAttribute('y1',y.toFixed(1));
+          pe.line.setAttribute('stroke-opacity',(op*0.28).toFixed(2));
+        });
+
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+    </script>
 
     <!-- Floating score panel -->
     <div class="viz-score-panel">
