@@ -2049,112 +2049,107 @@
     color: var(--light-secondary);
   }
 
-  /* TESTIMONIALS */
+  /* TESTIMONIALS — 5-tile grid */
   .testimonials {
     background: var(--light-bg);
+    padding: 96px max(48px, calc((100vw - 1280px) / 2));
     position: relative;
-    overflow: hidden;
   }
   .testimonials .section-headline { color: var(--light-ink) !important; }
   .testimonials .section-eyebrow { color: var(--violet) !important; }
   .testimonials .section-eyebrow::before { background: var(--violet) !important; }
-  .testimonials .section-sub { color: var(--light-mid) !important; }
 
   .testimonials-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
     margin-bottom: 56px;
   }
 
-  .testimonials-grid {
+  .t-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--light-border);
-    border-radius: 20px;
-    overflow: hidden;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
   }
 
-  .testimonial {
-    background: var(--light-surface);
-    border-radius: 0;
-    padding: 40px;
-    border: none;
-    transition: background 0.2s;
+  .t-card {
+    background: #ffffff;
+    border: 1px solid rgba(10,10,15,0.07);
+    border-radius: 16px;
+    padding: 36px;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    box-sizing: border-box;
+    transition: background 0.2s, border-color 0.2s;
   }
+  .t-card:hover { background: #f7f5ff; border-color: rgba(105,81,244,0.2); }
 
-  .testimonial:hover {
-    background: #f5f3ff;
-  }
+  /* Row 1: 3 equal cards */
+  .t-card:nth-child(1) { grid-column: 1 / 5; }
+  .t-card-center      { grid-column: 5 / 9; }
+  .t-card:nth-child(3) { grid-column: 9 / 13; }
 
-  .testimonial-mark {
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 52px;
-    line-height: 0.75;
-    margin-bottom: 16px;
-    display: block;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--violet), var(--purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  /* Row 2: 2 wider cards */
+  .t-card:nth-child(4) { grid-column: 1 / 7; }
+  .t-card:nth-child(5) { grid-column: 7 / 13; }
 
-  .testimonial-quote {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--light-ink);
-    line-height: 1.7;
-    flex: 1;
-    margin-bottom: 28px;
-  }
-
-  .testimonial-quote strong {
-    font-weight: 500;
-    color: var(--violet);
-  }
-  .testimonial .testimonial-author {
-    border-top: 1px solid var(--light-border);
-  }
-
-  .testimonial-author {
+  .t-card-center {
+    grid-column: 5 / 9;
+    background: #ffffff;
+    border: 1.5px solid rgba(105,81,244,0.2);
+    border-radius: 16px;
+    padding: 40px;
     display: flex;
-    align-items: center;
-    gap: 12px;
-    padding-top: 20px;
-    border-top: 1px solid var(--light-border);
+    flex-direction: column;
+    transition: background 0.2s, border-color 0.2s;
   }
+  .t-card-center:hover { background: #f7f5ff; border-color: rgba(105,81,244,0.4); }
 
-  .author-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--violet), var(--cyan));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Lexend', sans-serif;
+  .t-qmark {
+    font-family: "Georgia", serif;
+    font-size: 44px;
     font-weight: 700;
+    line-height: 1;
+    color: var(--violet);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .t-card-center .t-qmark { font-size: 60px; margin-bottom: 20px; }
+
+  .t-text {
     font-size: 14px;
-    color: white;
-    flex-shrink: 0;
+    font-weight: 400;
+    color: var(--light-ink);
+    line-height: 1.72;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+  .t-card-center .t-text {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.65;
   }
 
-  .author-name {
+  .t-footer {
+    border-top: 1px solid rgba(10,10,15,0.08);
+    padding-top: 18px;
+    margin-top: auto;
+  }
+
+  .t-name {
     font-size: 13px;
     font-weight: 600;
     color: var(--light-ink);
   }
 
-  .author-title {
+  .t-role {
     font-size: 12px;
-    color: var(--light-mid);
-    margin-top: 2px;
+    color: var(--light-secondary);
+    margin-top: 3px;
+  }
+
+  .t-company-desc {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--light-secondary);
+    line-height: 1.6;
+    margin-top: 10px;
   }
 
   /* CLIENTS */
@@ -2989,45 +2984,63 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="testimonials-header">
-    <div>
-      <p class="section-eyebrow">Client Stories</p>
-      <h2 class="section-headline">Hard To Unuse.<br>Don't Take Our Word.</h2>
-    </div>
+    <p class="section-eyebrow">Client Stories</p>
+    <h2 class="section-headline">Hard To Unuse.<br>Don't Take Our Word.</h2>
   </div>
-  <div class="testimonials-grid">
-    <div class="testimonial">
-      <span class="testimonial-mark">&ldquo;</span>
-      <p class="testimonial-quote">The technology has unlocked enhanced vetting of the creators we partner with and gives our team a <strong style="color: var(--violet)">forensic look into potential risks</strong> quickly and efficiently. And by including ongoing monitoring, we can be the best agency partners by protecting our brands against real time risks.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">FD</div>
-        <div>
-          <p class="author-name">Freddy Dabaghi</p>
-          <p class="author-title">Chief Transformation Officer, Crispin</p>
-        </div>
+  <div class="t-grid">
+
+    <!-- Row 1, card 1 -->
+    <div class="t-card">
+      <span class="t-qmark">&ldquo;</span>
+      <p class="t-text">Crispin has partnered with VwD for almost two years and has fully integrated their solution into our creator marketing process. The technology has unlocked enhanced vetting of the creators we partner with and gives our team a forensic look into potential risks quickly and efficiently. And by including ongoing monitoring, we can be the best agency partners by protecting our brands against real time risks that have plagued this industry for far too long.</p>
+      <div class="t-footer">
+        <p class="t-name">Freddy Dabaghi,</p>
+        <p class="t-role">Chief Transformation Officer @Crispin</p>
+        <p class="t-company-desc">Crispin is a creative advertising agency known for bold, unconventional campaigns that help brands stand out and connect with audiences across digital and traditional media.</p>
       </div>
     </div>
-    <div class="testimonial">
-      <span class="testimonial-mark">&ldquo;</span>
-      <p class="testimonial-quote">With VwD, we were able to vet and move forward with launching campaigns within just <strong style="color: var(--violet)">2–3 days, compared to the 2+ weeks</strong> it used to take us manually. The platform enabled faster, more confident decisions and significantly improved our speed to market.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">KJ</div>
-        <div>
-          <p class="author-name">Kassia Janesch</p>
-          <p class="author-title">Brand Manager, Foundation Consumer Healthcare</p>
-        </div>
+
+    <!-- Row 1, center featured -->
+    <div class="t-card-center">
+      <span class="t-qmark">&ldquo;</span>
+      <p class="t-text">With VwD, we were able to vet and move forward with launching campaigns within just 2–3 days, compared to the 2+ weeks it used to take us manually. The platform enabled faster, more confident decisions and significantly improved our speed to market. It's been a real game changer for our team.</p>
+      <div class="t-footer">
+        <p class="t-name">Kassia Janesch,</p>
+        <p class="t-role">Brand Manager @Foundation Consumer Healthcare</p>
+        <p class="t-company-desc">Foundation Consumer Healthcare develops and markets over-the-counter health products, offering trusted solutions for everyday wellness across categories like cold relief, digestive health, and personal care.</p>
       </div>
     </div>
-    <div class="testimonial">
-      <span class="testimonial-mark">&ldquo;</span>
-      <p class="testimonial-quote">VwD has been a useful addition to our influencer vetting process, helping teams <strong style="color: var(--violet)">identify content opportunities all in one place</strong>. For clients operating in highly regulated environments, features like influencer report cards and monitoring alerts offer valuable peace of mind.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">ZG</div>
-        <div>
-          <p class="author-name">VP, Influencer Marketing</p>
-          <p class="author-title">Zeno Group</p>
-        </div>
+
+    <!-- Row 1, card 3 -->
+    <div class="t-card">
+      <span class="t-qmark">&ldquo;</span>
+      <p class="t-text">VwD is a game-changing tool, saving us valuable time while providing the confidence and support we need when working with Creators. The real-time updates keep us flexible and current, allowing us to tackle challenges before they escalate. Customer service is also truly next level.</p>
+      <div class="t-footer">
+        <p class="t-name">Associate Director</p>
+        <p class="t-company-desc">A global agency offering strategy, marketing, and management services across sports, music, and entertainment, helping clients grow influence and engagement worldwide.</p>
       </div>
     </div>
+
+    <!-- Row 2, card 4 -->
+    <div class="t-card">
+      <span class="t-qmark">&ldquo;</span>
+      <p class="t-text">VwD has been a useful addition to our influencer vetting process, helping teams review potential compliance considerations and identify content opportunities all in one place. For clients operating in highly regulated environments, features like influencer report cards and monitoring alerts offer valuable peace of mind. We also appreciate how the VwD team is collaborative and consistently listens to client feedback, making the platform more responsive to our ever-changing digital landscape.</p>
+      <div class="t-footer">
+        <p class="t-name">Vice President, Influencer Marketing</p>
+        <p class="t-company-desc">An integrated communications agency that helps organizations build and protect brand reputation through strategic storytelling, media relations, and digital engagement.</p>
+      </div>
+    </div>
+
+    <!-- Row 2, card 5 -->
+    <div class="t-card">
+      <span class="t-qmark">&ldquo;</span>
+      <p class="t-text">VwD has been a huge help in quick-turn asks that are frequently coming our way in social. The team is extremely responsive and accommodating to assist whenever needed.</p>
+      <div class="t-footer">
+        <p class="t-name">Account Director</p>
+        <p class="t-company-desc">One of the world's leading marketing and advertising networks, known for building brands through creative strategy and global reach. Their teams partner with top companies to deliver campaigns that drive meaningful connections with audiences worldwide.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -3267,6 +3280,7 @@
     <span>Making creator partnerships safer, smarter, and scalable.</span>
   </div>
 </footer>
+
 
 
 </body>
